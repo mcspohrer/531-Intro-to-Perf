@@ -1,0 +1,6 @@
+#!/bin/bash
+
+make
+
+echo fast strong cache 30 10
+valgrind --tool=cachegrind ./s 30 5

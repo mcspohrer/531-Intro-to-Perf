@@ -1,0 +1,11 @@
+Hey prof,
+
+Again, you have two options here.
+
+You can enter "make" into the comand line then run ./par <N><T> and ./seq <N>.
+They are both compiled with -pg so their gprof stats will be produced.
+
+Alternatively, you can use the ./run script and it'll cycle through a variety
+of inputs, appending the gprof stats to the files created by the script. It 
+may take about 30 s to run.
+

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+make
+
+for i in {5,10,20}
+do
+  echo slow strong cache 30 $i
+  valgrind --tool=cachegrind ./s 30 $i
+done
+for i in {1,2,5,10,20}
+do
+  echo fast strong cache 30 $i
+  valgrind --tool=cachegrind ./s 30 $i
+done

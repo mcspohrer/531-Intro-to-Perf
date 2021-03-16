@@ -1,0 +1,21 @@
+#!/bin/bash
+
+make
+
+[ -f seq.txt ] && rm seq.txt
+[ -f par.txt ] && rm par.txt
+touch seq.txt
+touch par.txt
+
+for j in {3000000,20000000,100000000,500000000}
+do
+  ./seq $j
+  echo "N:$j-----------------------------------------------------------" >> seq.txt
+  gprof seq gmon.out >> seq.txt -b
+  for k in {2,5,10,20}
+  do
+    ./par $j $k
+    echo "N:$j;T:$k-----------------------------------------------------------" >> par.txt
+    gprof par gmon.out >> par.txt -b
+  done
+done
